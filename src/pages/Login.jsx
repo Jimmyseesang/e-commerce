@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom"
 import InputComponent from "../components/InputComponent"
+import axios from "axios"
+import { useState } from "react"
 
 const Login = () => {
+
     return (
         <section className="flex h-screen relative">
             <div className="grow bg-stone-200 relative">
@@ -11,10 +14,10 @@ const Login = () => {
                 <h1 className="text-stone-200 text-3xl font-bold">Login</h1>
                 <div className="text-stone-200 flex flex-col items-center">
                     <form className="my-4 w-80">
-                        <InputComponent titleName="Username" id="username" type="text" placeholder="username..." color="black" />
-                        <InputComponent titleName="Password" id="password" type="password" placeholder="password..." color="black" />
+                        <InputComponent titleName="Username" id="username" type="text" placeholder="username..." color="black"/>
+                        <InputComponent titleName="Password" id="password" type="password" placeholder="password..." color="black"/>
                     </form>
-                    <button type="subbmit" className="bg-white text-zinc-900 text-lg p-3 w-64 rounded cursor-none hover:bg-zinc-500 transition-colors ease-in">Login</button>
+                    <button type="submit" className="bg-white text-zinc-900 text-lg p-3 w-64 rounded cursor-none hover:bg-zinc-500 transition-colors ease-in">Login</button>
                     <div className="flex mt-5">
                         <p className="mr-5">don't have an account?</p>
                         <Link className="flex items-center hover:text-zinc-500 transition-colors ease-out" to='/'><i class="fa-solid fa-right-to-bracket mr-2"></i><p className="font-bold">Sign Up</p></Link>
