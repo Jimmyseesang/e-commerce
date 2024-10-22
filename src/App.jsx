@@ -11,7 +11,6 @@ const App = () => {
     const dot3 = useRef(null)
 
     useEffect(() => {
-        // ตรวจสอบขนาดหน้าจอว่ามีความกว้างมากกว่า 768px หรือไม่ (ถือเป็นแท็บเล็ตและมือถือที่ความกว้างน้อยกว่านี้)
         if (window.innerWidth > 768) {
             const cursor1 = dot1.current
             const cursor2 = dot2.current
@@ -57,9 +56,9 @@ const App = () => {
 
     return (
         <div className="font-nunito">
-            <div ref={dot1} className="w-5 h-5 -translate-x-1/2 -translate-y-1/2 bg-stone-800 fixed -top-5 -left-5 z-10 rounded-full pointer-events-none"></div>
-            <div ref={dot2} className="w-5 h-5 -translate-x-1/2 -translate-y-1/2 bg-stone-500 fixed -top-5 -left-5 z-10 rounded-full pointer-events-none"></div>
-            <div ref={dot3} className="w-5 h-5 -translate-x-1/2 -translate-y-1/2 bg-stone-300 fixed -top-5 -left-5 z-10 rounded-full pointer-events-none"></div>
+            <div ref={dot1} className="w-5 h-5 -translate-x-1/2 -translate-y-1/2 bg-stone-800 fixed -top-5 -left-5 z-10 rounded-full pointer-events-none z-20"></div>
+            <div ref={dot2} className="w-5 h-5 -translate-x-1/2 -translate-y-1/2 bg-stone-500 fixed -top-5 -left-5 z-10 rounded-full pointer-events-none z-20"></div>
+            <div ref={dot3} className="w-5 h-5 -translate-x-1/2 -translate-y-1/2 bg-stone-300 fixed -top-5 -left-5 z-10 rounded-full pointer-events-none z-20"></div>
             <Routes>
                 <Route path="/" element={<Register />} />
                 <Route path="/login" element={<Login />} />

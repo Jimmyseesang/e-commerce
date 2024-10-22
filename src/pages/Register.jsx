@@ -16,6 +16,7 @@ const Register = () => {
     const [passwordStatus, setPasswordStatus] = useState(false)
     const [alertBox, setAlertBox] = useState(false)
     const [closeAlert, setcloseAlert] = useState(false)
+    const [msgAlert, setMsgAlert] = useState("")
 
     const handleData = (field, value) => {
         setDataForm(prevState => ({
@@ -71,17 +72,20 @@ const Register = () => {
 
                 const result = await res.json()
 
-                if (res.status === 200) {
+                if (res.status === 201) {
                     navigate('/login')
-                    console.log("Registeration Success!!!", result)
-                    setDataForm({
-                        username: '',
-                        email: '',
-                        password: ''
-                    })
+                        console.log("Registeration Success!!!", result)
                 } else if (res.status === 400) {
-                    console.log("email already exists!!")
-                    setAlertBox(true)
+                    if(result.msg === 'Username already exists') {
+                        setMsgAlert(result.msg)
+                        setAlertBox(true)
+                        console.log(result.msg)
+                    }
+                    else {
+                        setMsgAlert(result.msg)
+                        setAlertBox(true)
+                        console.log(result.msg)
+                    }
                 }
             } catch (err) {
                 console.log("Error", err)
@@ -111,7 +115,7 @@ const Register = () => {
                 </div>
                 <div className={`w-96 h-48 absolute -top-1/2 right-1/2 translate-x-1/2 bg-zinc-900 rounded ${alertBox ? 'animate-alertBox' : ''} ${closeAlert ? 'animate-closeAlert' : ''} flex flex-col justify-evenly items-center`}>
                     <i className="fa-solid fa-circle-xmark text-6xl text-red-900"></i>
-                    <p className="text-red-900 text-xl font-bold">This email already exists</p>
+                    <p className="text-red-900 text-xl font-bold">{msgAlert}</p>
                     <button className="bg-stone-200 w-24 text-zinc-900 p-1 rounded cursor-none hover:bg-red-900" onClick={handleCloseAlert}>Close</button>
                 </div>
             </div>
