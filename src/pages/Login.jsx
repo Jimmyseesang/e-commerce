@@ -81,7 +81,7 @@ const Login = () => {
     }
 
     return (
-        <section className="flex h-screen relative bg-zinc-900">
+        <section className="flex h-screen relative bg-zinc-900 truncate">
             <div className="grow bg-stone-200 relative xl:animate-leftSiteLogin">
                 <img className="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 w-0 sm:w-[450px] hover:w-[550px] transition-all sm:ease-in animate-cakeAppearSm" src="/oreo-cake.png" />
             </div>

@@ -3,8 +3,31 @@ import Register from "./pages/Register"
 import Login from "./pages/Login"
 import { useEffect, useRef } from "react"
 import Store from "./pages/Store"
+import AddProducts from "./pages/AddProducts"
 
 const App = () => {
+
+    const authPage = async () => {
+        const token = localStorage.getItem('token')
+
+        try {
+            const res = await fetch('http://192.168.1.48:5000/auth/page', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify()
+            })
+
+            if(res.status === 200) {}
+            else{window.location = '/login'}
+
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
     const dot1 = useRef(null)
     const dot2 = useRef(null)
@@ -62,7 +85,8 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Register />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/store" element={<Store />} />
+                <Route path="/store" element={<Store authPage={authPage} />} />
+                <Route path="/add-product" element={<AddProducts authPage={authPage} />} />
             </Routes>
         </div>
     )

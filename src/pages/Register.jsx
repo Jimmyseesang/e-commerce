@@ -94,7 +94,7 @@ const Register = () => {
     }
 
     return (
-        <section className="h-screen flex relative">
+        <section className="h-screen flex relative truncate">
             <div className="w-full h-full bg-stone-200 flex flex-col justify-center items-center xl:w-1/3 xl:animate-leftSiteXl sm:w-1/2 sm:animate-leftSiteSm   absolute">
                 <div className="fixed">
                     <div>
