@@ -8,7 +8,7 @@ const Store = (props) => {
     useEffect(() => { authPage() }, [])
 
     return (
-        <div className="bg-stone-500 relative" style={{ overflowY: 'scroll', scrollbarWidth: 'none' }}>
+        <div className="bg-stone-200 relative" style={{ overflowY: 'scroll', scrollbarWidth: 'none' }}>
             <NavbarComponent />
             <section className="h-screen w-screen relative" id="section-oreo">
                 <div className="h-5/6 w-[95%] bg-zinc-700 absolute top-[15%] right-1/2 translate-x-1/2 rounded-lg">
