@@ -48,6 +48,22 @@ export default {
                     '0%': {top: '5%'},
                     '50%': {top: '10%'},
                     '100%': {top: '-30%'}
+                },
+                animation1: {
+                    '0%': { top: '50%', right: '50%' },
+                    '100%': { top: '30%', right: '30%' }
+                },
+                animation2: {
+                    '0%': { top: '50%', right: '50%' },
+                    '100%': { top: '30%', right: '70%' }
+                },
+                animation3: {
+                    '0%': { top: '50%', right: '50%' },
+                    '100%': { top: '65%', right: '60%' }
+                },
+                animation4: {
+                    '0%': { top: '50%', right: '50%' },
+                    '100%': { top: '82%', right: '20%' }
                 }
             },
             animation: {
@@ -59,7 +75,11 @@ export default {
                 cakeAppearSm: 'cakeAppearSm 1s ease-in-out',
                 formAppear: 'formAppear 1s ease-in-out',
                 alertBox: 'alertBox 500ms ease-in-out forwards',
-                closeAlert: 'closeAlert 500ms ease-in-out forwards'
+                closeAlert: 'closeAlert 500ms ease-in-out forwards',
+                animation1: 'animation1 300ms ease-in-out forwards',
+                animation2: 'animation2 300ms ease-in-out forwards',
+                animation3: 'animation3 300ms ease-in-out forwards',
+                animation4: 'animation4 300ms ease-in-out forwards'
             }
         },
     },

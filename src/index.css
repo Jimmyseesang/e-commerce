@@ -7,6 +7,7 @@
 * {
 
     cursor: none;
+    box-sizing: border-box;
 
 }
 
@@ -14,6 +15,10 @@ html {
     scroll-behavior: smooth;
 }
 
-.nav-hover {
-    @apply w-1/12 flex justify-center items-center hover:bg-stone-500 py-2 px-12 rounded-full;
+.input-style {
+    @apply rounded p-4 outline-none;
+}
+
+.label-style {
+    @apply text-lg font-bold mb-2;
 }
