@@ -27,6 +27,9 @@ const NavbarComponent = () => {
                     <li className="transition-colors duration-300 hover:bg-stone-500 rounded-full p-2">
                         <Link to={'/add-product'}>Products</Link>
                     </li>
+                    <li className="transition-colors duration-300 hover:bg-stone-500 rounded-full p-2">
+                        <Link to={'/profile'}><i className="fa-solid fa-user"></i></Link>
+                    </li>
                 </ul>
             </div>
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import NavbarComponent from "../components/NavbarComponent"
+import AlertComponent from "../components/AlertComponent"
 
 const AddProducts = (props) => {
 
@@ -13,26 +14,37 @@ const AddProducts = (props) => {
     const [stock, setStock] = useState('')
     const [product, setProduct] = useState([])
     const formData = new FormData()
+    const [successAlert, setSuccessAlert] = useState(false)
+    const [failAlert, setFailAlert] = useState(false)
+    const [successDelete, setSuccessDelete] = useState(false)
+
+    const checkData = () => {
+        
+    }
 
     const deleteProduct = async (id) => {
 
         try {
 
-            const res = await fetch(`http://192.168.1.48:5000/product/delete/${id}`,{
+            const res = await fetch(`http://192.168.1.48:5000/product/delete/${id}`, {
                 method: "DELETE"
             })
 
             const result = await res.json()
-            if(res.status === 200) {
+            if (res.status === 200) {
+                setSuccessDelete(true)
+                setTimeout(() => {
+                    setSuccessDelete(false)
+                },2000)
                 console.log(result.msg)
             }
-            else{
+            else {
                 console.log(result.msg)
             }
 
             searchAllProduct()
 
-        }catch(err){
+        } catch (err) {
             console.log(err)
         }
 
@@ -48,8 +60,6 @@ const AddProducts = (props) => {
 
             const result = await res.json()
             setProduct(result)
-            console.log(result)
-
 
         } catch (err) {
             console.log(err)
@@ -71,7 +81,6 @@ const AddProducts = (props) => {
         setName('');
         setDescription('');
         setPrice('');
-        setImage(null);
         setCategory('');
         setStock('');
 
@@ -83,8 +92,21 @@ const AddProducts = (props) => {
             })
 
             const result = await response.json()
-            searchAllProduct()
-            return console.log('add product success ^-^', result)
+            if (response.status === 201) {
+                searchAllProduct()
+                setSuccessAlert(true)
+                setTimeout(() => {
+                    setSuccessAlert(false)
+                }, 2000)
+                return console.log('add product success ^-^', result)
+            }
+            else {
+                setFailAlert(true)
+                setTimeout(() => {
+                    setFailAlert(false)
+                }, 2000)
+                return console.log('error')
+            }
 
         } catch (err) {
             return console.log('Add product fail!!!')
@@ -100,6 +122,9 @@ const AddProducts = (props) => {
     return (
         <div className="h-screen bg-stone-200" style={{ overflowY: 'scroll', scrollbarWidth: 'none' }}>
             <NavbarComponent />
+            <AlertComponent type="good" text="Add product success" status={successAlert}/>
+            <AlertComponent type="bad" text="Add product fail !!!" status={failAlert}/>
+            <AlertComponent type="good" text="Delete product success" status={successDelete}/>
             <div className="w-full flex md:flex-row flex-col">
                 <form className="h-full w-1/2 mx-auto mt-40 flex flex-col items-center" onSubmit={handleSummit}>
                     <h1 className="text-3xl font-bold mb-2">Add Product</h1>
@@ -224,7 +249,7 @@ const AddProducts = (props) => {
                                         <button className="bg-blue-400 rounded p-2 cursor-none hover:bg-blue-200">Update</button>
                                     </td>
                                     <td className="border-2 border-zinc-900 border-gray-400 p-2">
-                                        <button className="bg-red-400 rounded p-2 cursor-none hover:bg-red-200" onClick={() => {deleteProduct(e._id)}}>Delete</button>
+                                        <button className="bg-red-400 rounded p-2 cursor-none hover:bg-red-200" onClick={() => { deleteProduct(e._id) }}>Delete</button>
                                     </td>
                                 </tr>
                             ))}
