@@ -4,6 +4,7 @@ import Login from "./pages/Login"
 import { useEffect, useRef } from "react"
 import Store from "./pages/Store"
 import AddProducts from "./pages/AddProducts"
+import Profile from "./pages/Profile"
 
 const App = () => {
 
@@ -87,6 +88,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/store" element={<Store authPage={authPage} />} />
                 <Route path="/add-product" element={<AddProducts authPage={authPage} />} />
+                <Route path="/profile" element={<Profile/>}/>
             </Routes>
         </div>
     )

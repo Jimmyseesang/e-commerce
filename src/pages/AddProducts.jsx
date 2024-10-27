@@ -19,7 +19,7 @@ const AddProducts = (props) => {
     const [successDelete, setSuccessDelete] = useState(false)
 
     const checkData = () => {
-        
+
     }
 
     const deleteProduct = async (id) => {
@@ -35,7 +35,7 @@ const AddProducts = (props) => {
                 setSuccessDelete(true)
                 setTimeout(() => {
                     setSuccessDelete(false)
-                },2000)
+                }, 2000)
                 console.log(result.msg)
             }
             else {
@@ -122,9 +122,9 @@ const AddProducts = (props) => {
     return (
         <div className="h-screen bg-stone-200" style={{ overflowY: 'scroll', scrollbarWidth: 'none' }}>
             <NavbarComponent />
-            <AlertComponent type="good" text="Add product success" status={successAlert}/>
-            <AlertComponent type="bad" text="Add product fail !!!" status={failAlert}/>
-            <AlertComponent type="good" text="Delete product success" status={successDelete}/>
+            <AlertComponent type="good" text="Add product success" status={successAlert} />
+            <AlertComponent type="bad" text="Add product fail !!!" status={failAlert} />
+            <AlertComponent type="good" text="Delete product success" status={successDelete} />
             <div className="w-full flex md:flex-row flex-col">
                 <form className="h-full w-1/2 mx-auto mt-40 flex flex-col items-center" onSubmit={handleSummit}>
                     <h1 className="text-3xl font-bold mb-2">Add Product</h1>
@@ -229,33 +229,34 @@ const AddProducts = (props) => {
                     </div>
                 </form>
                 <div className="h-full w-1/2 mx-auto mt-60 hidden md:block">
-                    <table className="w-[90%] border border-gray-400 border-collapse bg-zinc-900/25 rounded">
-                        <thead>
-                            <tr className="font-bold text-lg border border-gray-400">
-                                <th className="border-2 border-zinc-900 border-gray-400 p-2">Name</th>
-                                <th className="border-2 border-zinc-900 border-gray-400 p-2">Price</th>
-                                <th className="border-2 border-zinc-900 border-gray-400 p-2">Description</th>
-                                <th className="border-2 border-zinc-900 border-gray-400 p-2">Update</th>
-                                <th className="border-2 border-zinc-900 border-gray-400 p-2">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {product.map((e) => (
-                                <tr key={e._id} className="text-center border border-gray-400">
-                                    <td className="border-2 border-zinc-900 border-gray-400 p-2">{e.name}</td>
-                                    <td className="border-2 border-zinc-900 border-gray-400 p-2">{e.price}</td>
-                                    <td className="border-2 border-zinc-900 border-gray-400 p-2">{e.description}</td>
-                                    <td className="border-2 border-zinc-900 border-gray-400 p-2">
-                                        <button className="bg-blue-400 rounded p-2 cursor-none hover:bg-blue-200">Update</button>
-                                    </td>
-                                    <td className="border-2 border-zinc-900 border-gray-400 p-2">
-                                        <button className="bg-red-400 rounded p-2 cursor-none hover:bg-red-200" onClick={() => { deleteProduct(e._id) }}>Delete</button>
-                                    </td>
+                    <div className="max-h-[600px] w-[90%] overflow-y-auto border-2 border-zinc-900" style={{scrollbarWidth: 'none'}}>
+                        <table className="w-full bg-zinc-400">
+                            <thead className="sticky top-0 bg-zinc-900/90 text-stone-200">
+                                <tr className="font-bold text-lg">
+                                    <th className=" p-2">Name</th>
+                                    <th className=" p-2">Price</th>
+                                    <th className=" p-2">Description</th>
+                                    <th className=" p-2">Update</th>
+                                    <th className=" p-2">Delete</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-
+                            </thead>
+                            <tbody>
+                                {product.map((e) => (
+                                    <tr key={e._id} className="text-center border-b-2 border-zinc-900 last:border-b-0">
+                                        <td className="border-r-2 border-zinc-900 p-2">{e.name}</td>
+                                        <td className="border-r-2 border-zinc-900 p-2">{e.price}</td>
+                                        <td className="border-r-2 border-zinc-900 p-2">{e.description}</td>
+                                        <td className="border-r-2 border-zinc-900 p-2">
+                                            <button className="bg-blue-400 rounded p-2 cursor-none hover:bg-blue-200">Update</button>
+                                        </td>
+                                        <td className="p-2">
+                                            <button className="bg-red-400 rounded p-2 cursor-none hover:bg-red-200" onClick={() => { deleteProduct(e._id) }}>Delete</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
